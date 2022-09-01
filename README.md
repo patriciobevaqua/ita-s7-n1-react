@@ -14,30 +14,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## Learn More
 
@@ -45,26 +21,67 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+# S7. Pressupost
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Descripció
 
-### Analyzing the Bundle Size
+En el lliurament anterior, malgrat ser un projecte petit, ja has posat en pràctica els conceptes principals de React: components, estat, props, styled components i renderitzat condicional.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+En aquest lliurament realitzarem una aplicació per calcular el pressupost d'una pàgina web, afegint més interaccions amb l'usuari/ària que en la pràctica anterior (caselles de selecció, inputs, botons). La nostra web haurà de reaccionar i modificar el preu total en funció de les opcions que triï l'usuari.
 
-### Making a Progressive Web App
+Notes
+Tens les següents indicacions del responsable front end:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Crearem la base del projecte sobre la qual treballar executant el comando: npx create-react-app nom_del_projecte. 
 
-### Advanced Configuration
+ Per saber més
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Tens més informació sobre aquest pas en aquest enllaç:-> Crear una nueva aplicación React
 
-### Deployment
+## Nivell 1
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### - Exercici 1
+La nostra aplicació començarà amb tres checkboxes mitjançant els quals l'usuari/ària podrà decidir si vol obtenir el pressupost d'una pàgina web (500 €), una campanya SEO (300 €) o una campanya de publicitat (200 €).
 
-### `npm run build` fails to minify
+En funció de les opcions que marqui, es mostrarà un preu diferent.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+De moment no et compliquis, implementa aquesta lògica en el component principal App. 
+
+Simplement, hauràs de crear 3 caselles de selecció que executi una funció, passant a aquesta funció l'esdeveniment de la casella de selecció, per a saber quina casella de selecció ha estat clicat. En funció de la casella de selecció que s'hagi premut, hauràs de modificar el preu total en conseqüència. 
+
+ Important
+
+Pots guardar la situació de cada casella de selecció en estats diferents per a poder calcular el total o bé es pot crear un únic estat en format array per a centralitzar la situació de les tres caselles de selecció.
+Convé guardar el pressupost total calculat en un estat.
+
+
+### - Exercici 2
+Una vegada creades les caselles de selecció que permetran a l'usuari/ària seleccionar el tipus de servei que necessita, li oferirem l'opció d'ajustar un dels serveis: crear una pàgina web, podent triar el nombre de pàgines i d'idiomes.
+
+Per a això, cal definir un styled-component anomenat Panell que serà visible quan el client/a seleccioni que vol fer una pàgina web.
+
+Dins d'aquest component, el client/a podrà seleccionar el nombre de pàgines i el nombre d'idiomes de la web que desitja fer. 
+
+Al cost total de la web haurem d'afegir la següent quantitat:
+
+-  Nombre de pàgines * el nombre d'idiomes * 30 €.
+
+
+### - Exercici 3
+GENIAL!, l'usuari/ària ja pot demanar 3 dels nostres serveis i customitzar un d'ells. 
+
+Per a fer la vida més fàcil a l'usuari/ària, en lloc de fer-li teclejar el nombre de pàgines i idiomes que necessita, li posarem uns botons als costats de l'input perquè de manera fàcil pugui modificar la seva selecció.
+
+Per a ells, has de canviar els <input type = "text" /> del panell per un nou component fet a mida, que tindrà botons d'incrementar i decrementar la quantitat, a més d'un quadre de text en què podrem escriure la quantitat directament:
+
+
+### - Exercici 4
+Ja gairebé has completat la base del projecte, et falta guardar les dades dels camps seleccionats per l'usuari en localstorage.
+
+Has d'usar el hook useEffect per a carregar les dades del localstorage quan s'inicialitzi el component.
+
+
+### - Exercici 5
+Per a acabar aquesta primera fase del projecte, és necessari implementar una pantalla de benvinguda per l'usuari/ària, on s'expliqui el propòsit i funcionament de la web.
+
+És necessari que implementis la navegació entre vistes utilitzant el routing de React.
